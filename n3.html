@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thiệp sinh nhật</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      background: url('https://i.ibb.co/JWpd8W8W/vecteezy-cartoon-forest-with-green-hills-trees-rocks-and-gradient-60626673.jpg') no-repeat center center fixed;
+      background-size: cover;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+      overflow: hidden;
+    }
+    h1 {
+      color: #ff69b4;
+      margin-top: 40px;
+      text-shadow: 2px 2px 4px #fff;
+    }
+    button {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 18px;
+      background: #ffb6c1;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #ff69b4;
+      color: #fff;
+    }
+    #card-container {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 999;
+    }
+    #card-container iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>🎂 Chúc mừng sinh nhật 🎂</h1>
+  <button id="open-btn" onclick="openCard()">Mở thiệp 🎉</button>
+
+  <div id="card-container">
+    <iframe loading="lazy" src="https://www.canva.com/design/DAGxXjxNGoc/TQC3xybxsLe8wUckbh5RSQ/watch?embed" allowfullscreen></iframe>
+  </div>
+
+  <!-- Nhạc nền -->
+  <audio id="bg-music" loop>
+    <source src="Download (audio-extractor.net).mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function openCard() {
+      document.getElementById('card-container').style.display = 'block';
+      document.getElementById('open-btn').style.display = 'none';
+      document.querySelector('h1').style.display = 'none';
+
+      // Bắt đầu phát nhạc
+      const music = document.getElementById('bg-music');
+      music.play().catch(() => {
+        // Nếu trình duyệt chặn autoplay, bật sau click đầu tiên
+        document.body.addEventListener('click', () => music.play(), {once:true});
+      });
+    }
+  </script>
+</body>
+</html>
